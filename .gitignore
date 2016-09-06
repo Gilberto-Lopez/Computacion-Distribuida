@@ -3,3 +3,6 @@
 
 # Archivos PDF
 **/*.pdf
+
+# Archivos compilados Python
+**/*.pyc

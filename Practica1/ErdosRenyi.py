@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+from Grafica import Grafica
+
 class ErdosRenyi(Grafica):
 	"""Gráficas aleatorias. Modelo Erdős-Rényi."""
 	
