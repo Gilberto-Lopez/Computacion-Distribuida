@@ -26,12 +26,17 @@ class Grafica(object):
 			#Devuelve la lista de vecinos
 			return self.__vecinos
 			
+		@property
+		def grado(self):
+			#Devuelve el grado del nodo
+			return len(self.__vecinos)
+
 		def agregaVecino(self, vecino):
-			#Agrega un vecinos
+			#Agrega un vecino
 			self.__vecinos.append(vecino)
 			
 		def eliminaVecino(self, vecino):
-			#Elimina un vecinos
+			#Elimina un vecino
 			self.__vecinos.remove(vecino)
 	
 	def __init__(self, n):
@@ -87,5 +92,21 @@ class Grafica(object):
 		if vn == None:
 			raise Exception("El vértice no existe.")
 		return vn
+	
+	def distribucionGrados(self):
+		"""Regresa un diccionario con la distribución de grados de la gráfica."""
+		dist = dict.fromkeys(range(len(self.__vertices) - 1),0)
+		g = 1.0 / len(self.__vertices)
+		for vertice in self.__vertices:
+			dist[vertice.grado] += g
+		return dist
 		
+	def listaAdyacencias(self):
+		"""Regresa la lista de adyacencias de la gráfica. Una lista de tuplas (i,j) donde i y j están conectados"""
+		l = []
+		for vertice in self.__vertices:
+			for vecino in vertice.vecinos:
+				l.append((vertice.etiqueta,vecino.etiqueta))
+		return l
+
 #Fin Grafica.py
