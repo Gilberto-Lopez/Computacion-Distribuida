@@ -38,6 +38,17 @@ class Grafica(object):
 		def eliminaVecino(self, vecino):
 			#Elimina un vecino
 			self.__vecinos.remove(vecino)
+
+		@property
+		def coeficienteAoplamiento(self):
+			#Regresa el coeficiente de acoplamiento local de un vertice
+			k = len(self.vecinos)*(len(self.vecinos) - 1)
+			li = 0.0
+			for vecino in self.vecinos:
+				for vecino2 in self.vecinos:
+					if vecino2 in vecino.vecinos:
+						li += 1.0
+			return li / k
 	
 	def __init__(self, n):
 		"""Constructor, recibe un entero n y añade n vertices a la gráfica, etiquetados de 0 a n-1."""
@@ -104,5 +115,12 @@ class Grafica(object):
 			for vecino in vertice.vecinos:
 				l.append((vertice.etiqueta,vecino.etiqueta))
 		return l
+		
+	def coeficienteAcoplamiento(self):
+		"""Regresa el coeficiente de acoplamiento promedio de la red."""
+		suma = 0.0
+		for vertice in self.__vertices:
+			suma = suma + vertice.coeficienteAcoplamiento
+		return suma / len(self.__vertices)
 
 #Fin Grafica.py
