@@ -52,35 +52,31 @@ class Grafica(object):
 		return self.__vertices
 			
 	def agregaVertice(self):
-		"""Agrega un nuevo vértice a la gráfica. Regresa la etiqueta del nuevo vértice."""
-		self.__vertices.append(self.__Nodo(self.__sig))
+		"""Agrega un nuevo vértice a la gráfica. Regresa el nuevo vértice."""
+		nuevo = self.__Nodo(self.__sig)
+		self.__vertices.append(nuevo)
 		self.__sig += 1
-		return self.__sig - 1
+		return nuevo
 		
 	def conecta(self, n, m):
 		"""Agrega una arista del vértice n al m. Los vértices deben existir en la gráfica y no estar conectados."""
-		vn = self.getVertice(n)
-		vm = self.getVertice(m)
-		if vn in vm.vecinos:
+		if n in m.vecinos:
 			raise Exception("Los nodos ya están conectados.")
-		vn.agregaVecino(vm)
-		vm.agregaVecino(vn)
+		n.agregaVecino(m)
+		m.agregaVecino(n)
 	
 	def desconecta(self, n, m):
 		"""Desconecta los vértice n y m. Los vértices deben existir en la gráfica y estar conectados."""
-		vn = self.getVertice(n)
-		vm = self.getVertice(m)
-		if not vn in vm.vecinos:
+		if not n in m.vecinos:
 			raise Exception("Los vértices no están conectados.")
-		vn.eliminaVecino(vm)
-		vm.eliminaVecino(vn)
+		n.eliminaVecino(m)
+		m.eliminaVecino(n)
 	
 	def eliminaVertice(self,n):
 		"""Elimina el vértice con etiqueta n de la gráfica. El vértice debe existir en la gráfica."""
-		vn = self.getVertice(n)
-		for vecino in vn.vecinos:
-			vecino.eliminaVecino(vn)
-		self.__vertices.remove(vn)
+		for vecino in n.vecinos:
+			vecino.eliminaVecino(n)
+		self.__vertices.remove(n)
 	
 	def getVertice(self,n):
 		"""Regresa el vertice con la etiqueta n. Si el vértice no existe se lanza una excepción."""
