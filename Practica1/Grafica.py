@@ -40,14 +40,14 @@ class Grafica(object):
 			self.__vecinos.remove(vecino)
 
 		@property
-		def coeficienteAoplamiento(self):
+		def coeficienteAcoplamiento(self):
 			#Regresa el coeficiente de acoplamiento local de un vertice
-			k = len(self.vecinos)*(len(self.vecinos) - 1)
+			k = len(self.vecinos)*(len(self.vecinos) - 1) #No se divide entre 2 por (*)
 			li = 0.0
 			for vecino in self.vecinos:
 				for vecino2 in self.vecinos:
 					if vecino2 in vecino.vecinos:
-						li += 1.0
+						li += 1.0 #(*) Cada arista se cuenta dos veces
 			return li / k
 	
 	def __init__(self, n):

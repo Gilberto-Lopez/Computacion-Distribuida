@@ -12,8 +12,8 @@ class BarabasiAlbert(Grafica):
 		
 	def __init__(self, n, m, m0 = __m0):
 		"""Construye una gráfica de n vértices, con m0 vértices iniciales (n > m0) y m aristas por cada vértice nuevo agregado."""
-		super(BarabasiAlbert, self).__init__(m0)
-		self.__aristasAleatorias(m0)
+		super(BarabasiAlbert, self).__init__(max(m0, self.__m0))
+		self.__aristasAleatorias()
 		j = m0
 		while j < n:
 			et = self.agregaVertice()
@@ -29,23 +29,21 @@ class BarabasiAlbert(Grafica):
 					i += 1
 			j += 1
 				
-	def __probabilidad(self,vertice):
+	def __probabilidad(self, vertice):
 		#Da la probabilidad de que un nodo se conecte con el nodo vertice.
 		suma = 0.0
 		for v in self.vertices:
 			suma += v.grado
 		return vertice.grado / suma
 		
-	def __aristasAleatorias(self,m0):
+	def __aristasAleatorias(self):
 		#Agrega aristas aleatorias entre los m0 vértices
-		for i in range(m0):
-			for j in range(m0):
+		for i in self.vertices:
+			for j in self.vertices:
 				if i != j:
-					ni = self.getVertice(i)
-					nj = self.getVertice(j)
-					if ni in nj.vecinos:
+					if i in j.vecinos:
 						continue
 					if random.random() > 0.5:
-						self.conecta(self.getVertice(i),self.getVertice(j))
+						self.conecta(i, j)
 
 # Fin BarabasiAlbert.py
