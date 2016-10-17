@@ -6,3 +6,6 @@
 
 # Archivos compilados Python
 **/*.pyc
+
+# Archivos compilados Java
+**/*.class

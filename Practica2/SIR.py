@@ -33,7 +33,7 @@ class SIR(BarabasiAlbert):
 			self.e = estado
 			self.s = 0 #Siguiente estado.
 			self.t = 0 #Tiempo en el estado actual.
-			
+
 	def __init__(self,agentes = 100, infectados = __infectados_iniciales):
 		"""
 		El modelo se inicializa con una cierta cantidad de agentes,
