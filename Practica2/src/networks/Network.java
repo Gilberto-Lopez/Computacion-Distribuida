@@ -73,63 +73,25 @@ public class Network {
     }
 
     public void createErdosRennyNetwork(int nodeNumber, double connectivity) {
-        /*
         this.nodos = new Node[nodeNumber];
 
-        Node n = new Node(0);
-        nodos[0] = n;
-        int totalNodes = 1;
+        for (int i = 0; i < nodeNumber; i++)
+            nodos[i] = new Node(i);
         
         for (int i = 1; i < nodeNumber; i++) {
+            System.out.println("Conectando nodo " + i);
+            Node nNode = nodos[i];
+            for (int j = 0; j < i; j++) {
+                double ran = r.nextDouble();
 
-            Node nNode = new Node(i);
-            
-            while (nNode.vecs.isEmpty()) {
-                System.out.println("Conectando nodo " + i);
-                for (int j = 0; j < totalNodes; j++) {
+                if (ran <= connectivity) {
 
-                    double ran = r.nextDouble();
+                    Node cand  = nodos[j];
 
-                    if (ran < connectivity) {
-                        
-                        Node cand  = nodos[j];
-                        
-                        nNode.vecs.add(cand);
-                        cand.vecs.add(nNode);                                
-                    }
+                    nNode.vecs.add(cand);
+                    cand.vecs.add(nNode);
                 }
             }
-            nodos[i] = nNode;
-            totalNodes++;
-        }
-        */
-        this.nodos = new Node[nodeNumber];
-
-        nodos[0] = new Node(0);
-        int totalNodes = 1;
-        
-        for (int i = 1; i < nodeNumber; i++) {
-
-            Node nNode = new Node(i);
-            
-            while (nNode.vecs.isEmpty()) {
-                System.out.println("Conectando nodo " + i);
-                for (int j = 0; j < totalNodes; j++) {
-
-                    double ran = r.nextDouble();
-                    Node cand;
-
-                    if (ran < connectivity) {
-                        
-                        cand  = nodos[j];
-                        
-                        nNode.vecs.add(cand);
-                        cand.vecs.add(nNode);                                
-                    }
-                }
-            }
-            nodos[i] = nNode;
-            totalNodes++;
         }
     }
 

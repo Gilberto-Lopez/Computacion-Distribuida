@@ -31,34 +31,34 @@ public class MAin {
 
         try {
             //Aleatoria
-            /*
+            
             PrintWriter out_random = new PrintWriter(new FileWriter("sir_r.dat"), true);
             
-            SIR modelo_random = new SIR(30000, false); //Se come la memoria, usar 1g RAM.
+            SIR modelo_random = new SIR(22000, false); //Gasta demasiada memoria, usar 1g RAM.
             
             out_random.println("0\t" + modelo_random.susceptibles + "\t" + modelo_random.infecciosos + "\t0");
             
-            for (int i = 1; i < 1000; i++) {
+            for (int i = 1; i < 2000; i++) {
                 modelo_random.actualiza();
                 out_random.println(i + "\t" + modelo_random.susceptibles + "\t" + modelo_random.infecciosos + "\t" + modelo_random.recuperados);
             }
             
             out_random.close();
-            */
-            //Libre de escala
             
+            //Libre de escala
+            /*
             PrintWriter out_scalefree = new PrintWriter(new FileWriter("sir_sfn.dat"), true);
 
             SIR modelo_scalefree = new SIR(100000, true);
 
             out_scalefree.println("0\t" + modelo_scalefree.susceptibles + "\t" + modelo_scalefree.infecciosos + "\t0");
 
-            for (int i = 1; i < 1000; i++) {
+            for (int i = 1; i < 2000; i++) {
                 modelo_scalefree.actualiza();
                 out_scalefree.println(i + "\t" + modelo_scalefree.susceptibles + "\t" + modelo_scalefree.infecciosos + "\t" + modelo_scalefree.recuperados);
             }
             out_scalefree.close();
-            
+            */
         } catch (IOException e) {
             e.printStackTrace();
         }

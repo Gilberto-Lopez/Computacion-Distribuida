@@ -21,9 +21,15 @@ public class SIR {
 	public int recuperados;
 
 	/** Tiempo que un agente pasa en el estado Recuperado. */
-	public final static int TIEMPO_RECUPERADO = 14;
+	//Influenza
+	//public final static int TIEMPO_RECUPERADO = 14;
+	//Difteria
+	public final static int TIEMPO_RECUPERADO = 35;
 	/** Tiempo que un agente pasa en el estado Infeccioso. */
-	public final static int TIEMPO_INFECCIOSO = 10;
+	//Influenza
+	//public final static int TIEMPO_INFECCIOSO = 10;
+	//Difteria
+	public final static int TIEMPO_INFECCIOSO = 21;
 	/** Cantidad de angetes que inician en el estado Infeccioso. */
 	public final static int INFECTADOS_INICIALES = 100;
 
@@ -75,7 +81,7 @@ public class SIR {
 		if (scaleFree)
 			red.createScaleFreeNetwork(agentes);
 		else
-			red.createErdosRennyNetwork(agentes,random.nextDouble());
+			red.createErdosRennyNetwork(agentes, 0.3);
 		recuperados = 0;
 		infecciosos = SIR.INFECTADOS_INICIALES;
 		susceptibles = agentes - infecciosos;
