@@ -9,3 +9,6 @@
 
 # Archivos compilados Java
 **/*.class
+
+# ZIP
+**/*.zip
